@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react"
+/* eslint-disable no-unused-vars */
 import axios from "axios"
-import { Lock, ChevronLeft, Shield, LogOut, Save, UserCircle } from "lucide-react"
+import { ChevronLeft, Lock, LogOut, Save, Shield, UserCircle } from "lucide-react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-import { INPUT_WRAPPER, FULL_BUTTON, SECTION_WRAPPER, BACK_BUTTON, DANGER_BTN, personalFields, securityFields } from '../assets/dummy'
+import { BACK_BUTTON, DANGER_BTN, FULL_BUTTON, INPUT_WRAPPER, personalFields, SECTION_WRAPPER, securityFields } from '../assets/dummy'
 
 // Constants & Dummy Data
-const API_URL = "http://localhost:4000"
+const API_URL = "https://deployment-testing-eight.vercel.app"
 
 export default function Profile({ setCurrentUser, onLogout }) {
   const [profile, setProfile] = useState({ name: "", email: "" })

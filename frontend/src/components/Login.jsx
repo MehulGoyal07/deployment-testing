@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react"
+/* eslint-disable no-unused-vars */
 import axios from "axios"
-import { Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react"
+import { Eye, EyeOff, Lock, LogIn, Mail } from "lucide-react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-import { INPUTWRAPPER, BUTTON_CLASSES } from '../assets/dummy'
+import { BUTTON_CLASSES, INPUTWRAPPER } from '../assets/dummy'
 
 // Dummy data and repeated CSS
 const INITIAL_FORM = { email: "", password: "" }
@@ -16,7 +17,7 @@ const Login = ({ onSubmit, onSwitchMode }) => {
   const [rememberMe, setRememberMe] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const url = "http://localhost:4000"
+  const url = "https://deployment-testing-eight.vercel.app"
 
   // Auto-login
   useEffect(() => {

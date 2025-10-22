@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react"
 import axios from "axios"
 import { format, isToday } from "date-fns"
+import { Calendar, CheckCircle2, Clock, MoreVertical } from "lucide-react"
+import { useEffect, useState } from "react"
+import { getPriorityBadgeColor, getPriorityColor, MENU_OPTIONS, TI_CLASSES, } from "../assets/dummy"
 import TaskModal from "./AddTask"
-import { getPriorityColor, getPriorityBadgeColor, TI_CLASSES, MENU_OPTIONS, } from "../assets/dummy"
-import { CheckCircle2, MoreVertical, Clock, Calendar } from "lucide-react"
 
-const API_BASE = "http://localhost:4000/api/tasks"
+const API_BASE = "https://deployment-testing-eight.vercel.app/api/tasks"
 
 const TaskItem = ({ task, onRefresh, onLogout, showCompleteCheckbox = true }) => {
   const [showMenu, setShowMenu] = useState(false)

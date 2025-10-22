@@ -1,18 +1,33 @@
-import { useState, useMemo, useCallback } from "react"
+/* eslint-disable no-unused-vars */
+import axios from "axios"
+import { Calendar as CalendarIcon, Filter, Home as HomeIcon, Plus } from "lucide-react"
+import { useCallback, useMemo, useState } from "react"
 import { useOutletContext } from "react-router-dom"
-import { Plus, Filter, Home as HomeIcon, Calendar as CalendarIcon, Flame } from "lucide-react"
 import TaskModal from "../components/AddTask"
 import TaskItem from "../components/TaskItem"
-import axios from "axios"
 
 import {
-  WRAPPER, HEADER, ADD_BUTTON, STATS_GRID, STAT_CARD, ICON_WRAPPER, VALUE_CLASS, LABEL_CLASS,
-  STATS, FILTER_OPTIONS, FILTER_LABELS, EMPTY_STATE, FILTER_WRAPPER, SELECT_CLASSES,
-  TABS_WRAPPER, TAB_BASE, TAB_ACTIVE, TAB_INACTIVE
+  ADD_BUTTON,
+  EMPTY_STATE,
+  FILTER_LABELS,
+  FILTER_OPTIONS,
+  FILTER_WRAPPER,
+  HEADER,
+  ICON_WRAPPER,
+  LABEL_CLASS,
+  SELECT_CLASSES,
+  STATS,
+  STATS_GRID, STAT_CARD,
+  TABS_WRAPPER,
+  TAB_ACTIVE,
+  TAB_BASE,
+  TAB_INACTIVE,
+  VALUE_CLASS,
+  WRAPPER
 } from '../assets/dummy'
 
 // API Base
-const API_BASE = "http://localhost:4000/api/tasks"
+const API_BASE = "https://deployment-testing-eight.vercel.app/api/tasks"
 
 const Dashboard = () => {
   const { tasks, refreshTasks } = useOutletContext()
