@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios"
-import { Eye, EyeOff, Lock, LogIn, Mail } from "lucide-react"
+import { Eye, EyeOff, Lock, LogIn, Mail, User } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
@@ -10,6 +10,7 @@ import { BUTTON_CLASSES, INPUTWRAPPER } from '../assets/dummy'
 
 // Dummy data and repeated CSS
 const INITIAL_FORM = { email: "", password: "" }
+const TEST_CREDENTIALS = { email: "tester@gmail.com", password: "tester@123" }
 
 const Login = ({ onSubmit, onSwitchMode }) => {
   const [showPassword, setShowPassword] = useState(false)
@@ -78,6 +79,12 @@ const Login = ({ onSubmit, onSwitchMode }) => {
     onSwitchMode?.()
   }
 
+  const fillTestCredentials = () => {
+    setFormData(TEST_CREDENTIALS)
+    setRememberMe(true)
+    toast.info("Test credentials filled! Click Login to continue.")
+  }
+
   // Field definitions
   const fields = [
     {
@@ -105,6 +112,26 @@ const Login = ({ onSubmit, onSwitchMode }) => {
         </div>
         <h2 className="text-2xl font-bold text-gray-800">Welcome Back</h2>
         <p className="text-gray-500 text-sm mt-1">Sign in to continue to TaskFlow</p>
+      </div>
+
+      {/* Test Credentials Section */}
+      <div className="mb-6 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+        <div className="flex items-center mb-2">
+          <User className="w-4 h-4 text-purple-600 mr-2" />
+          <h3 className="text-sm font-semibold text-purple-800">Test Credentials for Examiner</h3>
+        </div>
+        <div className="text-xs text-gray-600 mb-3">
+          <p><span className="font-medium">Email:</span> tester@gmail.com</p>
+          <p><span className="font-medium">Password:</span> tester@123</p>
+        </div>
+        <button
+          type="button"
+          onClick={fillTestCredentials}
+          className="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 flex items-center justify-center"
+        >
+          <User className="w-4 h-4 mr-2" />
+          Fill Test Credentials
+        </button>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
