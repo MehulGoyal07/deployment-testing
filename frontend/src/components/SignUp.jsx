@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react"
+/* eslint-disable no-unused-vars */
 import axios from "axios"
 import { UserPlus } from "lucide-react"
+import { useEffect, useState } from "react"
 
-import { Inputwrapper, FIELDS, BUTTONCLASSES, MESSAGE_SUCCESS, MESSAGE_ERROR } from '../assets/dummy'
+import { BUTTONCLASSES, FIELDS, Inputwrapper, MESSAGE_ERROR, MESSAGE_SUCCESS } from '../assets/dummy'
 
 // Dummy & Constants
-const API_URL = "http://localhost:4000"
+const API_URL = "https://deployment-testing-eight.vercel.app"
 const INITIAL_FORM = { name: "", email: "", password: "" }
 
 const SignUp = ({ onSwitchMode }) => {
