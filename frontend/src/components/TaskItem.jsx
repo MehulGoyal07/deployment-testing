@@ -119,9 +119,9 @@ const TaskItem = ({ task, onRefresh, onLogout, showCompleteCheckbox = true }) =>
                         type="checkbox"
                         checked={st.completed}
                         onChange={() => setSubtasks(prev => prev.map((s, idx) => idx === i ? {...s, completed: !s.completed} : s))}
-                        className="w-4 h-4 text-purple-500 rounded border-gray-300 focus:ring-purple-500"
+                        className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
                       />
-                      <span className={`text-sm truncate ${st.completed ? 'text-gray-400 line-through' : 'text-gray-600 group-hover/subtask:text-purple-700'} transition-colors duration-200`}>{st.title}</span>
+                      <span className={`text-sm truncate ${st.completed ? 'text-gray-400 line-through' : 'text-gray-600 group-hover/subtask:text-blue-700'} transition-colors duration-200`}>{st.title}</span>
                     </div>
                   ))}
                 </div>
@@ -141,7 +141,7 @@ const TaskItem = ({ task, onRefresh, onLogout, showCompleteCheckbox = true }) =>
                   <button
                     key={opt.action}
                     onClick={()=>handleAction(opt.action)}
-                    className="w-full px-3 sm:px-4 py-2 text-left text-xs sm:text-sm hover:bg-purple-50 flex items-center gap-2 transition-colors duration-200"
+                    className="w-full px-3 sm:px-4 py-2 text-left text-xs sm:text-sm hover:bg-blue-50 flex items-center gap-2 transition-colors duration-200"
                   >
                     {opt.icon}{opt.label}
                   </button>
@@ -151,7 +151,7 @@ const TaskItem = ({ task, onRefresh, onLogout, showCompleteCheckbox = true }) =>
           </div>
 
           <div>
-            <div className={`${TI_CLASSES.dateRow} ${task.dueDate && isToday(new Date(task.dueDate)) ? 'text-fuchsia-600' : 'text-gray-500'}`}>              
+            <div className={`${TI_CLASSES.dateRow} ${task.dueDate && isToday(new Date(task.dueDate)) ? 'text-blue-600' : 'text-gray-500'}`}>              
               <Calendar className="w-3.5 h-3.5" />
               {task.dueDate ? (isToday(new Date(task.dueDate)) ? 'Today' : format(new Date(task.dueDate), 'MMM dd')) : '—'}
             </div>

@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react"
+import { Lightbulb, Menu, Sparkles, X } from "lucide-react"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
-import { Sparkles, Lightbulb, Menu, X } from "lucide-react"
-import TaskModal from "../components/AddTask"
 import {
-  menuItems,
-  SIDEBAR_CLASSES,
   LINK_CLASSES,
+  menuItems,
   PRODUCTIVITY_CARD,
+  SIDEBAR_CLASSES,
   TIP_CARD,
 } from "../assets/dummy"
+import TaskModal from "../components/AddTask"
 
 const Sidebar = ({ user, tasks }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -57,15 +57,15 @@ const Sidebar = ({ user, tasks }) => {
     <>
       {/* Desktop Sidebar */}
       <div className={SIDEBAR_CLASSES.desktop}>
-        <div className="p-5 border-b border-purple-100 lg:block hidden">
+        <div className="p-5 border-b border-blue-100 lg:block hidden">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-md">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md">
               {initial}
             </div>
             <div>
               <h2 className="text-lg font-bold text-gray-800">Hey, {username}</h2>
-              <p className="text-sm text-purple-500 font-medium flex items-center gap-1">
-                <Sparkles className="w-3 h-3" /> Let’s crush some tasks!
+              <p className="text-sm text-blue-600 font-medium flex items-center gap-1">
+                <Sparkles className="w-3 h-3" /> Let's crush some tasks!
               </p>
             </div>
           </div>
@@ -91,7 +91,7 @@ const Sidebar = ({ user, tasks }) => {
             <div className={TIP_CARD.container}>
               <div className="flex items-center gap-2">
                 <div className={TIP_CARD.iconWrapper}>
-                  <Lightbulb className="w-5 h-5 text-purple-600" />
+                  <Lightbulb className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
                   <h3 className={TIP_CARD.title}>Pro Tip</h3>
@@ -126,20 +126,20 @@ const Sidebar = ({ user, tasks }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-4 border-b pb-2">
-              <h2 className="text-lg font-bold text-purple-600">Menu</h2>
-              <button onClick={() => setMobileOpen(false)} className="text-gray-700 hover:text-purple-600">
+              <h2 className="text-lg font-bold text-blue-600">Menu</h2>
+              <button onClick={() => setMobileOpen(false)} className="text-gray-700 hover:text-blue-600">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-md">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md">
                 {initial}
               </div>
               <div>
                 <h2 className="text-lg font-bold text-gray-800">Hey, {username}</h2>
-                <p className="text-sm text-purple-500 font-medium flex items-center gap-1">
-                  <Sparkles className="w-3 h-3" /> Let’s crush some tasks!
+                <p className="text-sm text-blue-600 font-medium flex items-center gap-1">
+                  <Sparkles className="w-3 h-3" /> Let's crush some tasks!
                 </p>
               </div>
             </div>
@@ -154,4 +154,4 @@ const Sidebar = ({ user, tasks }) => {
   )
 }
 
-export default Sidebar;
+export default Sidebar

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-import { BUTTON_CLASSES, INPUTWRAPPER } from '../assets/dummy'
 
 // Dummy data and repeated CSS
 const INITIAL_FORM = { email: "", password: "" }
@@ -103,96 +102,125 @@ const Login = ({ onSubmit, onSwitchMode }) => {
   ]
 
   return (
-    <div className="max-w-md w-full bg-white shadow-lg border border-purple-100 rounded-xl p-8">
+    <div className="max-w-md w-full bg-white shadow-xl rounded-2xl border border-gray-100 overflow-hidden">
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
 
-      <div className="mb-6 text-center">
-        <div className="w-16 h-16 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-full mx-auto flex items-center justify-center mb-4">
-          <LogIn className="w-8 h-8 text-white" />
-        </div>
-        <h2 className="text-2xl font-bold text-gray-800">Welcome Back</h2>
-        <p className="text-gray-500 text-sm mt-1">Sign in to continue to TaskFlow</p>
-      </div>
-
-      {/* Test Credentials Section */}
-      <div className="mb-6 p-4 bg-purple-50 border border-purple-200 rounded-lg">
-        <div className="flex items-center mb-2">
-          <User className="w-4 h-4 text-purple-600 mr-2" />
-          <h3 className="text-sm font-semibold text-purple-800">Test Credentials for Examiner</h3>
-        </div>
-        <div className="text-xs text-gray-600 mb-3">
-          <p><span className="font-medium">Email:</span> tester@gmail.com</p>
-          <p><span className="font-medium">Password:</span> tester@123</p>
-        </div>
-        <button
-          type="button"
-          onClick={fillTestCredentials}
-          className="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 flex items-center justify-center"
-        >
-          <User className="w-4 h-4 mr-2" />
-          Fill Test Credentials
-        </button>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {fields.map(({ name, type, placeholder, icon: Icon, isPassword }) => (
-          <div key={name} className={INPUTWRAPPER}>
-            <Icon className="text-purple-500 w-5 h-5 mr-2" />
-            <input
-              type={type}
-              placeholder={placeholder}
-              value={formData[name]}
-              onChange={(e) => setFormData({ ...formData, [name]: e.target.value })}
-              className="w-full focus:outline-none text-sm text-gray-700"
-              required
-            />
-            {isPassword && (
-              <button
-                type="button"
-                onClick={() => setShowPassword((prev) => !prev)}
-                className="ml-2 text-gray-500 hover:text-purple-500 transition-colors"
-              >
-                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-              </button>
-            )}
+      {/* Header Section */}
+      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 px-8 py-6 text-white">
+        <div className="flex items-center space-x-3">
+          <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+            <LogIn className="w-6 h-6" />
           </div>
-        ))}
+          <div>
+            <h2 className="text-xl font-semibold">Welcome Back</h2>
+            <p className="text-blue-100 text-sm">Sign in to your TaskManager account</p>
+          </div>
+        </div>
+      </div>
 
-        <div className="flex items-center">
-          <input
-            id="rememberMe"
-            type="checkbox"
-            checked={rememberMe}
-            onChange={() => setRememberMe(!rememberMe)}
-            className="h-4 w-4 text-purple-500 focus:ring-purple-400 border-gray-300 rounded"
-            required
-          />
-          <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-700">
-            Remember Me
-          </label>
+      <div className="px-8 py-6">
+        {/* Test Credentials Section */}
+        <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
+          <div className="flex items-center mb-3">
+            <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+              <User className="w-4 h-4 text-blue-600" />
+            </div>
+            <h3 className="text-sm font-semibold text-blue-800">Test Credentials</h3>
+          </div>
+          <div className="text-xs text-gray-600 mb-3 space-y-1">
+            <p className="flex justify-between">
+              <span className="font-medium text-gray-700">Email:</span>
+              <span className="font-mono">tester@gmail.com</span>
+            </p>
+            <p className="flex justify-between">
+              <span className="font-medium text-gray-700">Password:</span>
+              <span className="font-mono">tester@123</span>
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={fillTestCredentials}
+            className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all duration-200 flex items-center justify-center shadow-sm hover:shadow-md"
+          >
+            <User className="w-4 h-4 mr-2" />
+            Use Test Credentials
+          </button>
         </div>
 
-        <button type="submit" className={BUTTON_CLASSES} disabled={loading}>
-          {loading ? (
-            "Logging in..."
-          ) : (
-            <>
-              <LogIn className="w-4 h-4" /> Login
-            </>
-          )}
-        </button>
-      </form>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {fields.map(({ name, type, placeholder, icon: Icon, isPassword }) => (
+            <div key={name} className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Icon className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+              </div>
+              <input
+                type={type}
+                placeholder={placeholder}
+                value={formData[name]}
+                onChange={(e) => setFormData({ ...formData, [name]: e.target.value })}
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-sm text-gray-700 placeholder-gray-400"
+                required
+              />
+              {isPassword && (
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              )}
+            </div>
+          ))}
 
-      <p className="text-center text-sm text-gray-600 mt-6">
-        Don't have an account?{' '}
-        <button
-          type="button"
-          onClick={handleSwitchMode}
-          className="text-purple-600 hover:text-purple-700 hover:underline font-medium transition-colors"
-        >
-          Sign Up
-        </button>
-      </p>
+          <div className="flex items-center space-x-3">
+            <div className="flex items-center">
+              <input
+                id="rememberMe"
+                type="checkbox"
+                checked={rememberMe}
+                onChange={() => setRememberMe(!rememberMe)}
+                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                required
+              />
+            </div>
+            <label htmlFor="rememberMe" className="text-sm text-gray-700 font-medium">
+              Remember Me
+            </label>
+          </div>
+
+          <button 
+            type="submit" 
+            className={`w-full py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 ${loading ? 'cursor-not-allowed' : ''}`}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                <span>Logging in...</span>
+              </>
+            ) : (
+              <>
+                <LogIn className="w-4 h-4" />
+                <span>Login</span>
+              </>
+            )}
+          </button>
+        </form>
+
+        <div className="mt-6 pt-6 border-t border-gray-200">
+          <p className="text-center text-sm text-gray-600">
+            Don't have an account?{' '}
+            <button
+              type="button"
+              onClick={handleSwitchMode}
+              className="text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+            >
+              Sign Up
+            </button>
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

@@ -84,7 +84,7 @@ const Dashboard = () => {
       <div className={HEADER}>
         <div className="min-w-0">
           <h1 className="text-xl md:text-3xl font-bold text-gray-800 flex items-center gap-2">
-            <HomeIcon className="text-purple-500 w-5 h-5 md:w-6 md:h-6 shrink-0" />
+            <HomeIcon className="text-blue-600 w-5 h-5 md:w-6 md:h-6 shrink-0" />
             <span className="truncate">Task Overview</span>
           </h1>
           <p className="text-sm text-gray-500 mt-1 ml-7 truncate">Manage your tasks efficiently</p>
@@ -97,12 +97,12 @@ const Dashboard = () => {
 
       {/* Stats */}
       <div className={STATS_GRID}>
-        {STATS.map(({ key, label, icon: Icon, iconColor, borderColor = "border-purple-100", valueKey, textColor, gradient }) => (
+        {STATS.map(({ key, label, icon: Icon, iconColor, borderColor = "border-blue-100", valueKey, textColor, gradient }) => (
           <div key={key} className={`${STAT_CARD} ${borderColor}`}>
             <div className="flex items-center gap-2 md:gap-3">
               <div className={`${ICON_WRAPPER} ${iconColor}`}><Icon className="w-4 h-4 md:w-5 md:h-5" /></div>
               <div className="min-w-0">
-                <p className={`${VALUE_CLASS} ${gradient ? "bg-gradient-to-r from-fuchsia-500 to-purple-600 bg-clip-text text-transparent" : textColor}`}>{stats[valueKey]}</p>
+                <p className={`${VALUE_CLASS} ${gradient ? "bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent" : textColor}`}>{stats[valueKey]}</p>
                 <p className={LABEL_CLASS}>{label}</p>
               </div>
             </div>
@@ -115,7 +115,7 @@ const Dashboard = () => {
         {/* Filter */}
         <div className={FILTER_WRAPPER}>
           <div className="flex items-center gap-2 min-w-0">
-            <Filter className="w-5 h-5 text-purple-500 shrink-0" />
+            <Filter className="w-5 h-5 text-blue-600 shrink-0" />
             <h2 className="text-base md:text-lg font-semibold text-gray-800 truncate">{FILTER_LABELS[filter]}</h2>
           </div>
           <select value={filter} onChange={e => setFilter(e.target.value)} className={SELECT_CLASSES}>
@@ -132,7 +132,7 @@ const Dashboard = () => {
         <div className="space-y-4">
           {filteredTasks.length === 0 ? (
             <div className={EMPTY_STATE.wrapper}>
-              <div className={EMPTY_STATE.iconWrapper}><CalendarIcon className="w-8 h-8 text-purple-500" /></div>
+              <div className={EMPTY_STATE.iconWrapper}><CalendarIcon className="w-8 h-8 text-blue-600" /></div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">No tasks found</h3>
               <p className="text-sm text-gray-500 mb-4">{filter === "all" ? "Create your first task to get started" : "No tasks match this filter"}</p>
               <button onClick={() => setShowModal(true)} className={EMPTY_STATE.btn}>Add New Task</button>
@@ -151,8 +151,8 @@ const Dashboard = () => {
         </div>
 
         {/* Add Task (Desktop) */}
-        <div onClick={() => setShowModal(true)} className="hidden md:flex items-center justify-center p-4 border-2 border-dashed border-purple-200 rounded-xl hover:border-purple-400 bg-purple-50/50 cursor-pointer transition-colors">
-          <Plus className="w-5 h-5 text-purple-500 mr-2" />
+        <div onClick={() => setShowModal(true)} className="hidden md:flex items-center justify-center p-4 border-2 border-dashed border-blue-200 rounded-xl hover:border-blue-400 bg-blue-50/50 cursor-pointer transition-colors">
+          <Plus className="w-5 h-5 text-blue-600 mr-2" />
           <span className="text-gray-600 font-medium">Add New Task</span>
         </div>
       </div>

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { Award, Clock, Filter, ListChecks, Plus, SortAsc, SortDesc } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
@@ -56,7 +55,7 @@ const PendingTasks = () => {
       <div className={layoutClasses.headerWrapper}>
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800 flex items-center gap-2">
-            <ListChecks className="text-purple-500" /> Pending Tasks
+            <ListChecks className="text-blue-600" /> Pending Tasks
           </h1>
           <p className="text-sm text-gray-500 mt-1 ml-7">
             {sortedPendingTasks.length} task{sortedPendingTasks.length !== 1 && 's'} needing your attention
@@ -64,7 +63,7 @@ const PendingTasks = () => {
         </div>
         <div className={layoutClasses.sortBox}>
           <div className="flex items-center gap-2 text-gray-700 font-medium">
-            <Filter className="w-4 h-4 text-purple-500" />
+            <Filter className="w-4 h-4 text-blue-600" />
             <span className="text-sm">Sort by:</span>
           </div>
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className={layoutClasses.select}>
@@ -82,9 +81,9 @@ const PendingTasks = () => {
         </div>
       </div>
       <div className={layoutClasses.addBox} onClick={() => setShowModal(true)}>
-        <div className="flex items-center justify-center gap-3 text-gray-500 group-hover:text-purple-600 transition-colors">
+        <div className="flex items-center justify-center gap-3 text-gray-500 group-hover:text-blue-600 transition-colors">
           <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-200">
-            <Plus size={18} className="text-purple-500" />
+            <Plus size={18} className="text-blue-600" />
           </div>
           <span className="font-medium">Add New Task</span>
         </div>
@@ -93,7 +92,7 @@ const PendingTasks = () => {
         {sortedPendingTasks.length === 0 ? (
           <div className={layoutClasses.emptyState}>
             <div className="max-w-xs mx-auto py-6">
-              <div className={layoutClasses.emptyIconBg}><Clock className="w-8 h-8 text-purple-500" /></div>
+              <div className={layoutClasses.emptyIconBg}><Clock className="w-8 h-8 text-blue-600" /></div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">All caught up!</h3>
               <p className="text-sm text-gray-500 mb-4">No pending tasks - great work!</p>
               <button onClick={() => setShowModal(true)} className={layoutClasses.emptyBtn}>Create New Task</button>
@@ -108,7 +107,7 @@ const PendingTasks = () => {
               onDelete={() => handleDelete(task._id || task.id)}
               onToggleComplete={() => handleToggleComplete(
                 task._id || task.id,
-                !t.completed
+                !task.completed
               )}
               onEdit={() => { setSelectedTask(task); setShowModal(true); }}
               onRefresh={refreshTasks}
